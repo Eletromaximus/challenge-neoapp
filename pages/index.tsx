@@ -1,7 +1,5 @@
-// import Image from 'next/image'
-
-import Header from './components/Header'
-import SEO from './components/SEO'
+import Header from '../src/components/Header'
+import SEO from '../src/components/SEO'
 
 export default function Home () {
   return (
@@ -9,10 +7,12 @@ export default function Home () {
       <SEO />
       <Header />
 
-      {/* <main>
+      <main>
+        {/* <div className="card">
 
+        </div> */}
       </main>
-
+{/*
       <footer>
 
       </footer> */}

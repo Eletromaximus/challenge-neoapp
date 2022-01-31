@@ -1,24 +1,33 @@
-import { HeaderStyle, SearchStyle, RightStyle } from './styles'
+import * as S from './styles'
 import Image from 'next/image'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import { ShoppingCart, Search } from '@mui/icons-material'
 import Button from '../commons/Button'
 
 export default function Header () {
   return (
-    <HeaderStyle>
+    <S.HeaderStyle>
       <Image
         src='/speech-balloon-1.svg'
         width={250}
         height={150}
       />
 
-      <RightStyle>
-        <SearchStyle />
-        <Button>
-          <ShoppingCartIcon />
-        </Button>
-      </RightStyle>
+      <S.RightStyle>
+        <S.SearchStyle>
+          <S.InputStyle placeholder='...Pesquise seu quadrinho!'/>
 
-    </HeaderStyle>
+          <Search fontSize='large'/>
+        </S.SearchStyle>
+
+        <Button>
+          <ShoppingCart />
+
+          <S.NumberItemsStyle>
+
+          </S.NumberItemsStyle>
+        </Button>
+      </S.RightStyle>
+
+    </S.HeaderStyle>
   )
 }
