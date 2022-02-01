@@ -20,10 +20,12 @@ export default function Header () {
         </S.SearchStyle>
 
         <Button>
-          <ShoppingCart />
+          <ShoppingCart fontSize='large' />
 
           <S.NumberItemsStyle>
-
+            <span>
+              1
+            </span>
           </S.NumberItemsStyle>
         </Button>
       </S.RightStyle>

@@ -13,7 +13,7 @@ export const HeaderStyle = styled.header`
 export const SearchStyle = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   height: 58px;
   border-radius: 5px;
@@ -30,20 +30,21 @@ export const RightStyle = styled.div`
 export const NumberItemsStyle = styled.div`
   position: relative;
   z-index: 1;
-  width: 10px;
-  height: 10px;
-  margin-left: 28px;
-  margin-top: -30px;
+  width: 20px;
+  height: 20px;
+  margin-left: 30px;
+  margin-top: -50px;
   border-radius: 50px;
 
   background-color: yellow;
 `
 
 export const InputStyle = styled.input`
-  width: 85%;
+  width: 92%;
   height: 100%;
   border: none;
   border-radius: 5px;
+  padding-left: 5px;
 
   :focus {
     outline: none;
