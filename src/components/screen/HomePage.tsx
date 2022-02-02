@@ -37,7 +37,7 @@ export default function HomePage () {
       listStyle: 'none',
       flex: 1
     }}>
-      {marvel.map((content: IContent) => {
+      {marvel && marvel.map((content: IContent) => {
         return <li key={content.id}>
           <Card
           path={content.thumbnail.path}

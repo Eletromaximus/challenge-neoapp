@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import breakpointsMedia from '../../utils/breakpointsMedia'
 
-export const HeaderStyle = styled.nav`
+export const NavStyle = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,6 +9,18 @@ export const HeaderStyle = styled.nav`
   height: 160px;
   background-color: #DE2C2C;
   padding: 10px;
+
+  ${breakpointsMedia({
+    md: css`
+      flex-direction: row;
+    `,
+    sm: css`
+      flex-direction: column;
+    `,
+    xs: css`
+    flex-direction: column;
+  `
+  })}
 `
 
 export const SearchStyle = styled.div`
@@ -18,13 +31,36 @@ export const SearchStyle = styled.div`
   height: 58px;
   border-radius: 5px;
   background-color: #FFFFFF;
-  margin: 0 50px;
+  
+  ${breakpointsMedia({
+    md: css`
+      margin: 0 50px;
+    `,
+    sm: css`
+      margin: 0;
+    `
+  })}
 `
 
 export const RightStyle = styled.div`
   display: flex;
-  width: 75%;
   margin-right: 100px;
+  
+  ${breakpointsMedia({
+    md: css`
+      display: column;
+      width: 75%;
+    `,
+    sm: css`
+      display: flex;
+      width: 100%;
+    `,
+    xs: css`
+      display: flex;
+      width: 100%;
+      margin: 0;
+    `
+  })}
 `
 
 export const NumberItemsStyle = styled.div`

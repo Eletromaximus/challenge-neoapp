@@ -5,7 +5,7 @@ import Button from '../commons/Button'
 
 export default function Header () {
   return (
-    <S.HeaderStyle>
+    <S.NavStyle>
       <Image
         src='/speech-balloon-1.svg'
         width={250}
@@ -30,6 +30,6 @@ export default function Header () {
         </Button>
       </S.RightStyle>
 
-    </S.HeaderStyle>
+    </S.NavStyle>
   )
 }
