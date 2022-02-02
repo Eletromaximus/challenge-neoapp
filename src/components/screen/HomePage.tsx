@@ -12,8 +12,26 @@ interface IContent {
   name: string
 }
 
+const INITIAL_STATE = () => {
+  const initial = []
+  for (let i = 0; i < 10; i++) {
+    initial.push({
+      id: i,
+      thumbnail: {
+        path: './placeholder',
+        extension: 'png'
+      },
+      name: ''
+    })
+  }
+  return initial
+}
+
 export default function HomePage () {
-  const [marvel, setMarvel] = useState([])
+  const [marvel, setMarvel] = useState(INITIAL_STATE)
+  const [apiConfirm, setApiConfirm] = useState(false)
+
+  const x = apiConfirm === true ? '/portrait_xlarge' : ''
 
   async function listHQs () {
     await axios
@@ -21,6 +39,7 @@ export default function HomePage () {
       .then((response) => {
         const { results } = response.data
         setMarvel(results)
+        setApiConfirm(true)
       })
       .catch((err) => {
         console.log(err)
@@ -28,7 +47,8 @@ export default function HomePage () {
   }
 
   useEffect(() => {
-    listHQs()
+    console.log(marvel)
+    // listHQs()
   })
 
   return (
@@ -41,12 +61,16 @@ export default function HomePage () {
         listStyle: 'none',
         flex: 1
       }}>
-        {marvel && marvel.map((content: IContent) => {
+        { marvel.map((content: IContent) => {
           return <li key={content.id}>
             <Card
-            path={content.thumbnail.path}
-            extension={content.thumbnail.extension}
-            name={content.name}
+              src={
+                content.thumbnail.path +
+                x +
+                '.' +
+                content.thumbnail.extension
+              }
+              name={content.name}
             />
           </li>
         })}

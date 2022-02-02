@@ -1,25 +1,28 @@
+import { Box } from '../../../layout/Box'
 import { CardStyle } from './styles'
 
 interface ICard {
-  path: string,
-  extension: string,
+  src: string,
   name: string
 }
 
 export default function Card ({
-  path,
-  extension,
+  src,
   name
 }: ICard) {
   return (
     <CardStyle>
       <div className="cardImage">
-        <img src={
-            path + '/portrait_xlarge' + '.' + extension
-          }
+        <img src={src}
           alt={name}
         />
       </div>
+      <Box
+        className="infos"
+        fontFamily='Bangers'
+      >
+        <span>Nome: {name}</span>
+      </Box>
     </CardStyle>
   )
 }

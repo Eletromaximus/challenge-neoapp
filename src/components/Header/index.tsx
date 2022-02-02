@@ -6,18 +6,27 @@ import Button from '../commons/Button'
 export default function Header () {
   return (
     <S.NavStyle>
-      <Image
-        src='/speech-balloon-1.svg'
-        width={250}
-        height={150}
-      />
+      <div className="image">
+        <Image
+          src='/speech-balloon-1.svg'
+          width={250}
+          height={150}
+          layout='fixed'
+          priority={true}
+        />
+      </div>
 
       <S.RightStyle>
-        <S.SearchStyle>
-          <S.InputStyle placeholder='...Pesquise seu quadrinho!'/>
+        <S.SearchStyle
+          className='search'
+        >
+          <S.InputStyle
+            className='search-input'
+            placeholder='...Pesquise seu quadrinho!'
+          />
 
           <Search fontSize='large'/>
-        </S.SearchStyle>
+      </S.SearchStyle>
 
         <Button>
           <ShoppingCart fontSize='large' />
