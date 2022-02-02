@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Grid } from '../../layout/Grid'
 import Card from '../commons/Card'
 
 interface IContent {
@@ -31,21 +32,25 @@ export default function HomePage () {
   })
 
   return (
-    <ul style={{
-      display: 'flex',
-      flexWrap: 'wrap',
-      listStyle: 'none',
-      flex: 1
-    }}>
-      {marvel && marvel.map((content: IContent) => {
-        return <li key={content.id}>
-          <Card
-          path={content.thumbnail.path}
-          extension={content.thumbnail.extension}
-          name={content.name}
-          />
-        </li>
-      })}
-    </ul>
+    <Grid
+      value={10}
+    >
+      <ul style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        listStyle: 'none',
+        flex: 1
+      }}>
+        {marvel && marvel.map((content: IContent) => {
+          return <li key={content.id}>
+            <Card
+            path={content.thumbnail.path}
+            extension={content.thumbnail.extension}
+            name={content.name}
+            />
+          </li>
+        })}
+      </ul>
+    </Grid>
   )
 }

@@ -13,9 +13,13 @@ export default function Card ({
 }: ICard) {
   return (
     <CardStyle>
-      <img src={
-        path + '/portrait_xlarge' + '.' + extension
-      } alt={name} />
+      <div className="cardImage">
+        <img src={
+            path + '/portrait_xlarge' + '.' + extension
+          }
+          alt={name}
+        />
+      </div>
     </CardStyle>
   )
 }

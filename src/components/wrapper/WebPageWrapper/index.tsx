@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 import { Box } from '../../../layout/Box'
-import { Grid } from '../../../layout/Grid'
 import SEO from '../../SEO'
 import Header from '../../Header'
 
@@ -21,18 +20,7 @@ export default function WebPageWrapper ({ children }:IWebPage) {
           justifyContent='center'
           margin='20px 0'
         >
-          <Grid
-            value={10}
-          >
-            <ul style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              listStyle: 'none',
-              flex: 1
-            }}>
-              {children}
-            </ul>
-          </Grid>
+          {children}
         </Box>
       </main>
 
