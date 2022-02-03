@@ -3,7 +3,9 @@ import propToStyle from '../../../utils/propToStyle'
 
 interface IButton {
   color?: string,
-  margin?: string
+  backgroundColor?: string,
+  margin?: string,
+  padding?: string
 }
 
 export const ButtonStyle = styled.button<IButton>`
@@ -13,6 +15,8 @@ export const ButtonStyle = styled.button<IButton>`
 
   ${propToStyle('fontFamily')}
   ${propToStyle('color')}
+  ${propToStyle('backgroundColor')}
   ${propToStyle('margin')}
+  ${propToStyle('padding')}
 
 `

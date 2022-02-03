@@ -12,7 +12,8 @@ interface IContent {
     path: string,
     extension: string
   },
-  name: string
+  name: string,
+  nContent: number
 }
 
 const INITIAL_STATE = () => {
@@ -24,7 +25,8 @@ const INITIAL_STATE = () => {
         path: './placeholder',
         extension: 'png'
       },
-      name: ''
+      name: '',
+      nContent: 1
     })
   }
   return initial

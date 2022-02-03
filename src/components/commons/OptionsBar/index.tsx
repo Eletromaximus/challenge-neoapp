@@ -1,6 +1,6 @@
 import Button from '../Button'
 import { StyleOptionsBar } from './styles'
-import { comicsOption, charactersOption } from '../../Store/userSlice'
+import { comicsOption, charactersOption } from '../../Store/userOptionsSlice'
 import { useDispatch } from 'react-redux'
 
 const buttonsConfig = {

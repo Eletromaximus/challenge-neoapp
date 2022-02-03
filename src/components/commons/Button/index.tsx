@@ -5,8 +5,10 @@ interface IButton {
   children: ReactNode,
   color?: string,
   margin?: string,
+  padding?: string,
   fontFamily?: string,
-  onClick?: () => void
+  onClick?: () => void,
+  backgroundColor?: string
 }
 
 export default function Button ({ children, ...props }: IButton) {
