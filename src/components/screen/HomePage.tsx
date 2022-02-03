@@ -59,7 +59,7 @@ export default function HomePage () {
   }
 
   useEffect(() => {
-    listHQs()
+    // listHQs()
   }, [optionsSearch])
 
   return (
