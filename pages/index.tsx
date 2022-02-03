@@ -1,10 +1,12 @@
 import HomePage from '../src/components/screen/HomePage'
-import WebPageWrapper from '../src/components/wrapper/WebPageWrapper'
+import HOC from '../src/components/wrapper/hoc'
 
 export default function Home () {
   return (
-    <WebPageWrapper>
+    <HOC propsPage={{
+      onOptionsBar: true
+    }}>
       <HomePage />
-    </WebPageWrapper>
+    </HOC>
   )
 }

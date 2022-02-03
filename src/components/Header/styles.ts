@@ -3,19 +3,20 @@ import breakpointsMedia from '../../utils/breakpointsMedia'
 
 export const NavStyle = styled.nav`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100vw;
-  height: 160px;
   background-color: #DE2C2C;
   padding: 10px;
-
+  
   ${breakpointsMedia({
     md: css`
       flex-direction: row;
-    `,
+      justify-content: center;
+      height: 160px;
+      `,
     sm: css`
+      justify-content: space-between;
       flex-direction: column;
+      height: 230px;
     `,
     xs: css`
     flex-direction: column;
@@ -27,28 +28,28 @@ export const SearchStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   height: 58px;
   border-radius: 5px;
   background-color: #FFFFFF;
+  margin: 0;
   
-  ${breakpointsMedia({
+  /* ${breakpointsMedia({
     md: css`
       margin: 0 50px;
     `,
     sm: css`
-      margin: 0;
     `
-  })}
+  })} */
 `
 
 export const RightStyle = styled.div`
   display: flex;
-  margin-right: 100px;
+  /* margin-right: 50px; */
   
   ${breakpointsMedia({
     md: css`
-      display: column;
+      display: flex;
       width: 75%;
     `,
     sm: css`

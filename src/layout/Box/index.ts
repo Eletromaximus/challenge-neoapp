@@ -16,6 +16,7 @@ interface IBox {
   width?: string | object;
   height?: string | object;
   border?: string | object;
+  listStyle?: string | object;
   color?: string | object;
   maxWidth?: number | string | object;
   fontFamily?: string | object;
@@ -28,6 +29,7 @@ export const Box = styled.div<IBox>`
   ${propToStyle('justifyContent')}
   ${propToStyle('alignItems')}
   ${propToStyle('flex')}
+  ${propToStyle('listStyle')}
   ${propToStyle('flexWrap')}
   ${propToStyle('backgroundColor')}
   ${propToStyle('padding')}

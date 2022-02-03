@@ -1,7 +1,10 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { RootState } from '../Store/store'
+import { Box } from '../../layout/Box'
 import { Grid } from '../../layout/Grid'
 import Card from '../commons/Card'
+import { useSelector } from 'react-redux'
 
 interface IContent {
   id: number,
@@ -14,7 +17,7 @@ interface IContent {
 
 const INITIAL_STATE = () => {
   const initial = []
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     initial.push({
       id: i,
       thumbnail: {
@@ -29,17 +32,24 @@ const INITIAL_STATE = () => {
 
 export default function HomePage () {
   const [marvel, setMarvel] = useState(INITIAL_STATE)
-  const [apiConfirm, setApiConfirm] = useState(false)
+  const apiConfirm = useRef(false)
+  const optionsSearch = useSelector((state: RootState) => state.options)
 
-  const x = apiConfirm === true ? '/portrait_xlarge' : ''
+  const x = apiConfirm.current === true ? '/portrait_xlarge' : ''
 
   async function listHQs () {
     await axios
-      .get('http://localhost:3000/api/marvelapi')
+      .post('http://localhost:3000/api/marvelapi', {
+        search: optionsSearch
+      })
       .then((response) => {
-        const { results } = response.data
-        setMarvel(results)
-        setApiConfirm(true)
+        if (response.status !== 429) {
+          const { results } = response.data
+          apiConfirm.current = true
+          setMarvel(results)
+        } else {
+          console.log(response)
+        }
       })
       .catch((err) => {
         console.log(err)
@@ -47,20 +57,28 @@ export default function HomePage () {
   }
 
   useEffect(() => {
-    console.log(marvel)
-    // listHQs()
-  })
+    listHQs()
+  }, [optionsSearch])
 
   return (
     <Grid
-      value={10}
+      value={{
+        lg: 8,
+        md: 10,
+        sm: 12
+      }}
+      padding='0'
     >
-      <ul style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        listStyle: 'none',
-        flex: 1
-      }}>
+      <Box
+        display='flex'
+        flexWrap='wrap'
+        listStyle='none'
+        justifyContent={{
+          xs: 'center'
+        }}
+        padding='0'
+        flex={1}
+      >
         { marvel.map((content: IContent) => {
           return <li key={content.id}>
             <Card
@@ -74,7 +92,7 @@ export default function HomePage () {
             />
           </li>
         })}
-      </ul>
+      </Box>
     </Grid>
   )
 }

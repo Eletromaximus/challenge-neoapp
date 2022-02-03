@@ -2,16 +2,22 @@ import { ReactNode } from 'react'
 import { Box } from '../../../layout/Box'
 import SEO from '../../SEO'
 import Header from '../../Header'
+import OptionsBar from '../../commons/OptionsBar'
 
 interface IWebPage {
-  children: ReactNode
+  children: ReactNode,
+  onOptionsBar: boolean
 }
 
-export default function WebPageWrapper ({ children }:IWebPage) {
+export default function WebPageWrapper ({
+  children,
+  onOptionsBar
+}:IWebPage) {
   return (
     <div>
       <SEO />
       <Header />
+      {onOptionsBar && <OptionsBar />}
 
       <main>
         <Box
@@ -29,4 +35,8 @@ export default function WebPageWrapper ({ children }:IWebPage) {
       </footer>
     </div>
   )
+}
+
+WebPageWrapper.defaultProps = {
+  onOptionsBar: false
 }

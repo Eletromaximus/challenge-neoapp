@@ -7,7 +7,9 @@ export default async function marvelApi (
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method === 'GET') {
+  if (req.method === 'POST') {
+    const { search } = req.body
+    console.log(search)
     const time = Number(new Date())
 
     const hash = crypto
@@ -19,19 +21,17 @@ export default async function marvelApi (
       )
       .digest('hex')
 
-    const result = await axios.get(
-        `http://gateway.marvel.com/v1/public/characters?ts=${time}&apikey=${
+    await axios.get(
+        `http://gateway.marvel.com/v1/public/${search}?ts=${time}&apikey=${
           process.env.PUBLIC_KEY_MARVEL
         }&hash=${hash}`
     )
       .then((response) => {
-        return response.data
+        return res.send(response.data.data)
       })
       .catch((err) => {
-        console.log(err)
-        return err
+        return res.status(429).send(err.response.statusText)
       })
-    res.send(result.data)
   }
   res.status(500)
 }
