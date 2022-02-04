@@ -2,8 +2,16 @@ import * as S from './styles'
 import Image from 'next/image'
 import { ShoppingCart, Search } from '@mui/icons-material'
 import Button from '../commons/Button'
+import { useSelector } from 'react-redux'
+import { RootState } from '../Store/store'
 
-export default function Header () {
+interface IHeader {
+  onCartShopping: () => void
+}
+
+export default function Header ({ onCartShopping }: IHeader) {
+  const items = useSelector((state: RootState) => state.cart)
+
   return (
     <S.NavStyle>
       <div className="image">
@@ -28,14 +36,16 @@ export default function Header () {
           <Search fontSize='large'/>
       </S.SearchStyle>
 
-        <Button>
+        <Button
+          onClick={() => onCartShopping()}
+        >
           <ShoppingCart fontSize='large' />
 
-          <S.NumberItemsStyle>
+          {items && <S.NumberItemsStyle>
             <span>
               1
             </span>
-          </S.NumberItemsStyle>
+          </S.NumberItemsStyle>}
         </Button>
       </S.RightStyle>
 

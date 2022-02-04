@@ -9,7 +9,6 @@ export default async function marvelApi (
 ) {
   if (req.method === 'POST') {
     const { search } = req.body
-    console.log(search)
     const time = Number(new Date())
 
     const hash = crypto

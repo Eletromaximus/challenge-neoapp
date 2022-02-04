@@ -1,6 +1,6 @@
-import Button from '../Button'
+import Button from '../commons/Button'
 import { StyleOptionsBar } from './styles'
-import { comicsOption, charactersOption } from '../../Store/userOptionsSlice'
+import { comicsOption, charactersOption } from '../Store/userOptionsSlice'
 import { useDispatch } from 'react-redux'
 
 const buttonsConfig = {
@@ -8,11 +8,6 @@ const buttonsConfig = {
   margin: '0 20px',
   fontFamily: 'Bangers'
 }
-
-// interface IOptionBar {
-//   commicsButton: () => void,
-//   caractersButton: () => void,
-// }
 
 export default function OptionsBar () {
   const dispatch = useDispatch()

@@ -13,7 +13,9 @@ interface IContent {
     extension: string
   },
   name: string,
-  nContent: number
+  title: string,
+  nContent: number,
+  price: number
 }
 
 const INITIAL_STATE = () => {
@@ -59,7 +61,7 @@ export default function HomePage () {
   }
 
   useEffect(() => {
-    // listHQs()
+    listHQs()
   }, [optionsSearch])
 
   return (
@@ -90,7 +92,10 @@ export default function HomePage () {
                 '.' +
                 content.thumbnail.extension
               }
-              name={content.name}
+              name={content.name || content.title}
+              price={5}
+              id={content.id}
+              nContent={1}
             />
           </li>
         })}

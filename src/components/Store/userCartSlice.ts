@@ -1,12 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface IContent {
+// interface IContent {
+//   id: number,
+//   thumbnail: {
+//     path: string,
+//     extension: string
+//   },
+//   name: string,
+//   nContent: number,
+//   price: number
+// }
+
+interface ICard {
   id: number,
-  thumbnail: {
-    path: string,
-    extension: string
-  },
+  src: string,
   name: string,
+  price: number,
   nContent: number
 }
 
@@ -14,7 +23,7 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState: [],
   reducers: {
-    addHQ (state: IContent[], action: PayloadAction <IContent>) {
+    addHQ: (state: ICard[], action: PayloadAction <ICard>) => {
       if (state.length === 0) {
         state = [action.payload]
         return state
@@ -23,9 +32,7 @@ export const cartSlice = createSlice({
 
         if (content) {
           const index = state.indexOf(content)
-          const newCart = [...state]
-          newCart[index].nContent += 1
-          state = newCart
+          state[index].nContent += 1
           return state
         }
 
@@ -34,7 +41,7 @@ export const cartSlice = createSlice({
       }
     },
 
-    removeHQ (state: IContent[], action: PayloadAction<number>) {
+    removeHQ (state: ICard[], action: PayloadAction<number>) {
       if (state.length > 0) {
         const content = state.find(item => item.id === action.payload)
 
@@ -56,7 +63,7 @@ export const cartSlice = createSlice({
       return state
     },
 
-    cleanCart: (state) => {
+    cleanCart: (state: ICard[]) => {
       state = []
       return state
     }
