@@ -38,12 +38,13 @@ export default function Header ({ onCartShopping }: IHeader) {
 
         <Button
           onClick={() => onCartShopping()}
+          margin='0 0 0 10px'
         >
           <ShoppingCart fontSize='large' />
 
-          {items && <S.NumberItemsStyle>
+          {Boolean(items.length) && <S.NumberItemsStyle>
             <span>
-              1
+              {items.length}
             </span>
           </S.NumberItemsStyle>}
         </Button>

@@ -13,7 +13,7 @@ interface IContent {
     extension: string
   },
   name: string,
-  title: string,
+  title?: string,
   nContent: number,
   price: number
 }
@@ -28,14 +28,15 @@ const INITIAL_STATE = () => {
         extension: 'png'
       },
       name: '',
-      nContent: 1
+      nContent: 1,
+      descrition: ''
     })
   }
   return initial
 }
 
 export default function HomePage () {
-  const [marvel, setMarvel] = useState(INITIAL_STATE)
+  const [marvel, setMarvel] = useState<IContent[]>(INITIAL_STATE)
   const apiConfirm = useRef(false)
   const optionsSearch = useSelector((state: RootState) => state.options)
 
